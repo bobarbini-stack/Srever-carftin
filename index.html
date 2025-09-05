@@ -3,7 +3,10 @@
 <head>
   <meta charset="UTF-8">
   <title>تک‌گراف</title>
+  <!-- فونت ماینکرفت -->
   <link href="https://fonts.googleapis.com/css2?family=Press+Start+2P&display=swap" rel="stylesheet">
+  <!-- فونت ترسناک برای Tom -->
+  <link href="https://fonts.googleapis.com/css2?family=Creepster&display=swap" rel="stylesheet">
   <style>
     body {
       margin: 0;
@@ -61,7 +64,6 @@
       left: 5px;
     }
 
-    /* پنل‌ها پایین‌تر قرار گرفتن */
     #adminInfo { top: 250px; left: 20px; }
     #vipPanel { top: 300px; left: 20px; }
     #newsPanel { top: 250px; right: 20px; }
@@ -95,20 +97,27 @@
       to { text-shadow: 0 0 25px gold, 0 0 40px orange; }
     }
 
-    .rubika-btn {
+    /* دکمه گزارش مشکل – قرمز */
+    .report-btn {
       display: inline-block;
       margin-top: 10px;
-      background-color: #2962ff;
+      background-color: #b71c1c;
       color: white;
       padding: 8px 12px;
       border-radius: 6px;
       text-decoration: none;
       font-size: 10px;
       font-weight: bold;
+      animation: pulse 1s infinite;
+    }
+    .report-btn:hover {
+      background-color: #7f0000;
     }
 
-    .rubika-btn:hover {
-      background-color: #0039cb;
+    @keyframes pulse {
+      0% { box-shadow: 0 0 5px #ff0000; }
+      50% { box-shadow: 0 0 15px #ff4444; }
+      100% { box-shadow: 0 0 5px #ff0000; }
     }
 
     .warning {
@@ -129,6 +138,21 @@
       50% { color: lime; }
       75% { color: cyan; }
       100% { color: magenta; }
+    }
+
+    /* Tom حالت خونی */
+    .demonic {
+      color: red;
+      font-family: 'Creepster', cursive;
+      font-size: 18px;
+      text-shadow: 0 0 5px #ff0000, 0 0 15px #660000, 0 0 25px #330000;
+      animation: drip 1.5s infinite;
+    }
+
+    @keyframes drip {
+      0% { text-shadow: 0 0 5px #ff0000, 0 0 15px #660000; }
+      50% { text-shadow: 0 2px 10px #ff0000, 0 4px 20px #660000; }
+      100% { text-shadow: 0 0 5px #ff0000, 0 0 15px #330000; }
     }
   </style>
 </head>
@@ -207,24 +231,23 @@
 
       if (value === 'yasin') {
         info.innerHTML = `
-          <p>
-            اسم واقعی: یاسین <span class="rank">#1</span>
-          </p>
+          <p>اسم واقعی: یاسین <span class="rank">#100</span></p>
           <p>سابقه: صاحب سرور</p>
           <p>اخطارهای ادمینی: 0 | 3</p>
           <p class="vip-tag">VIP خریداری شده 💛</p>
-        `;
-      } else if (value === 'hosein') {
-        info.innerHTML = `
-          <p>اسم واقعی: حسین</p>
-          <p>سابقه: لیدر ارتش</p>
-          <p>اخطارهای ادمینی: 0 | 3</p>
         `;
       } else if (value === 'rogahaya') {
         info.innerHTML = `
           <p>اسم واقعی: رقیه</p>
           <p>سابقه: لیدر پلیس</p>
-          <p>اخطارهای ادمینی: 0 | 3</p>
+          <p>اخطارهای ادمینی: 0|3</p>
+        `;
+      } else if (value === 'tom') {
+        info.innerHTML = `
+          <p class="demonic">Tom</p>
+          <p class="demonic">سابقه: بن‌کننده</p>
+          <p class="demonic">ادمین سایت و سرور هستم</p>
+          <a href="mailto:Sweetwantad@gmail.com?subject=گزارش%20مشکل%20Tom" class="report-btn">📩 گزارش مشکل</a>
         `;
       } else {
         info.innerHTML = `<p>بازیکن یافت نشد.</p>`;
